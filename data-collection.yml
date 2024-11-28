@@ -1,0 +1,27 @@
+name: Collect BLS Data Monthly
+on:
+  schedule:
+    - cron: '0 0 1 * *' # Runs at midnight on the first day of each month
+jobs:
+  collect-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Collect new data
+        run: |
+          python scripts/collect_data.py  # Script to collect and append data
+      - name: Commit and push new data
+        run: |
+          git config --global user.email "youremail@example.com"
+          git config --global user.name "Your Name"
+          git add data/
+          git commit -m "Add new labor data"
+          git push
