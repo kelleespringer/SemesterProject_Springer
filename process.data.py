@@ -1,13 +1,16 @@
+
 import requests
 import json
 import pandas as pd
 
+# Set up API request
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 API_KEY = "17bce7d6b41147c597fde4dddd66e58c"
 
+
 series_ids = [
-    "CEU0000000001",
-    "LRU00000000"
+    "CEU0000000001",  
+    "LRU00000000"      
 ]
 
 def fetch_bls_data(series_id, start_year="2020", end_year="2024"):
@@ -33,7 +36,6 @@ def save_data(data, filename="data/bls_data.json"):
 
 data = fetch_all_data()
 save_data(data)
-
 def process_data(data):
     series_data = data["results"]["series"][0]["data"]
     df = pd.DataFrame(series_data)

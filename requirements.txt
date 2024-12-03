@@ -1,0 +1,6 @@
+streamlit
+pandas
+requests
+matplotlib
+
+pip install -r requirements.txt
