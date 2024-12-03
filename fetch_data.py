@@ -3,11 +3,11 @@ import json
 import pandas as pd
 
 BLS_API_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
-API_KEY = "17bce7d6b41147c597fde4dddd66e58c"  # Replace with your API key
+API_KEY = "17bce7d6b41147c597fde4dddd66e58c"
 
 series_ids = [
-    "CEU0000000001",  # Non-farm payroll employment
-    "LRU00000000"      # Unemployment rate
+    "CEU0000000001",
+    "LRU00000000"
 ]
 
 def fetch_bls_data(series_id, start_year="2020", end_year="2024"):
